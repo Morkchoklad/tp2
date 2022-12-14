@@ -74,7 +74,7 @@ with open(file_name, 'r') as r, open('output.csv', 'w', newline='') as w:
                 
                 
                 # print(phrase_list)
-                print()
+             
                 
                 if i == 0:
                     pair1 = phrase_list[i + 1].split('/')
@@ -112,8 +112,7 @@ with open(file_name, 'r') as r, open('output.csv', 'w', newline='') as w:
                     
                     row[0], row[4] = pair_2[0], pair_2[1]
                     pair1 = phrase_list[i + 1].split('/')
-                    print(phrase_list)
-                    print(pair1)
+                    
                     row[2], row[6] = pair1[0], pair1[1]
                     pair2 = phrase_list[i + 2].split('/')
                     row[3], row[7] = pair2[0], pair2[1]
