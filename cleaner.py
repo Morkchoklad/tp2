@@ -119,7 +119,7 @@ class WindowFeatures:
 
                         csv_writer.writerow(row)
 
-    def GetFeaturesWindow(self, file_name, window_size):
+    def GetFeaturesWindow(self, file_name, window_size, withPOS):
         self.CleanFileToWindows(file_name, window_size)
         file = open('output' + str(window_size) + '.csv')
         csvreader = csv.reader(file)
@@ -130,9 +130,15 @@ class WindowFeatures:
         for row in csvreader:
             X.append(row)
         y = []
+        # Use the parts of speech or no
+        if withPOS:
+            contextExtract = 4 * window_size
+        else:
+            contextExtract = 2 * window_size
+
         for row in X:
             rowDict = {}
-            for i in range(4*window_size):
+            for i in range(contextExtract):
                 rowDict.update({header[i] : row[i]})
             y.append(row[-1])
             pos_window.append(rowDict)
